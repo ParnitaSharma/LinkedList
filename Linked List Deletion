@@ -1,0 +1,55 @@
+
+public class LinkedListDeletion {
+	Node head;
+	class Node{
+		
+		Node next;
+		int data;
+		Node(int i){
+			data=i;
+		}
+		
+	}
+	void deleteNode(int key) {
+		Node temp=head, prev=null;
+		
+		if(temp==null && temp.data==key) {
+			head=temp.next;
+		}
+		while(temp!=null && temp.data!=key) {
+			prev=temp;
+			temp=temp.next;
+		}
+		prev.next=temp.next;
+		
+		
+	}
+	void push(int i) {
+		
+		Node newNode = new Node(i);
+		
+			newNode.next=head;
+			head=newNode;
+		
+		
+	}
+public static void main(String args[]) {
+	LinkedListDeletion d=new LinkedListDeletion();
+	d.push(10);
+	d.push(20);
+	d.push(30);
+	d.deleteNode(20);
+	System.out.println("The list is"); d.printList();
+}
+ int printList() {
+	Node num=head;
+	while(num!=null) {
+		System.out.println(num.data);
+		num=num.next;
+		
+	}
+	
+	return 0;
+}
+
+}
