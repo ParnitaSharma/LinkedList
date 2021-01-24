@@ -1,0 +1,52 @@
+
+public class DeleteDuplicateNode {
+	Node head;
+	class Node{
+		Node next;
+		int data;
+		Node(int x){
+			data=x;
+			next=null;
+		}
+	}
+public static void main(String ags[]) {
+	DeleteDuplicateNode dd= new DeleteDuplicateNode();
+	dd.push(10);
+	dd.push(10);
+	dd.push(21);
+	dd.push(31);
+	dd.push(40);
+	dd.deleteDuplicate();
+	dd.printList();
+}
+
+ void push(int i) {
+	Node newNode = new Node(i);
+	newNode.next=head;
+	head=newNode;
+	
+}
+void deleteDuplicate() {
+	Node curr=head;
+	while(curr!=null) {
+		Node temp=curr;
+        while(temp!=null && temp.data==curr.data) {
+            temp = temp.next;
+        }
+		curr.next=temp;
+		curr=curr.next;
+	}
+}
+void printList()
+{
+    Node temp = head;
+    while (temp != null)
+    {
+       System.out.print(temp.data+" ");
+       temp = temp.next;
+    }  
+    System.out.println();
+}
+
+
+}
