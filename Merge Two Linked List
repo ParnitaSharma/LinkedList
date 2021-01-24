@@ -1,0 +1,145 @@
+
+class Node{
+		Node next;
+		int data;
+		Node(int i){
+			data= i;
+			next=null;
+		}
+	}
+public class MergeTwoLinkedList {
+	 Node head;
+	
+	public void push(Node node) 
+	{
+	    if (head == null)
+	    {
+	        head = node;
+	    }
+	    else
+	    {
+	        Node temp = head;
+	        while (temp.next != null)
+	            temp = temp.next;
+	        temp.next = node;
+	    }
+	}
+	
+	 
+	  void printList()
+	 {
+	     Node temp = head;
+	     while (temp != null)
+	     {
+	         System.out.print(temp.data + " ");
+	         temp = temp.next;
+	     } 
+	     System.out.println();
+	 }
+	 
+	
+public static void main(String args[]) {
+	MergeTwoLinkedList ml1 = new MergeTwoLinkedList();
+	MergeTwoLinkedList ml2 = new MergeTwoLinkedList();
+	ml1.push(new Node(5));
+	ml1.push(new Node(10));
+	ml1.push(new Node(15));
+	
+	
+    ml2.push(new Node(2));
+    ml2.push(new Node(3));
+    ml2.push(new Node(20));
+    
+    ml1.head = new Gfg().mergeMethod(ml1.head, ml2.head);
+    ml1.printList();
+}
+
+
+}
+
+/*class Gfg{
+	 Node mergeMethod(Node l1, Node l2) {
+		Node dummyNode = new Node(0);
+		Node tail = dummyNode;
+		 
+		while(true) {
+			if(l1 ==null) {
+				tail.next=l2;
+				break;
+			}
+			if(l2==null) {
+				tail.next=l1;
+				break;
+			}
+			if(l1.data <= l2.data) {
+				tail.next=l1;
+				l1=l1.next;
+				
+			}
+			else {
+				tail.next=l2;
+				l2=l2.next;
+			}
+			tail=tail.next;
+			
+		}
+		return dummyNode.next;
+		 
+	 } 
+}*/
+class Gfg{
+Node mergeMethod(Node headA, Node headB)
+{
+     
+    /* a dummy first node to 
+       hang the result on */
+    Node dummyNode = new Node(0);
+     
+    /* tail points to the 
+    last result node */
+    Node tail = dummyNode;
+    while(true) 
+    {
+         
+        /* if either list runs out, 
+        use the other list */
+        if(headA == null)
+        {
+            tail.next = headB;
+            break;
+        }
+        if(headB == null)
+        {
+            tail.next = headA;
+            break;
+        }
+         
+        /* Compare the data of the two
+        lists whichever lists' data is 
+        smaller, append it into tail and
+        advance the head to the next Node
+        */
+        if(headA.data <= headB.data)
+        {
+            tail.next = headA;
+            headA = headA.next;
+        } 
+        else
+        {
+            tail.next = headB;
+            headB = headB.next;
+        }
+         
+        /* Advance the tail */
+        tail = tail.next;
+    }
+    return dummyNode.next;
+}
+}
+ 
+// This code is contributed
+// by Shubhaw Kumar
+
+
+
+
