@@ -1,0 +1,68 @@
+import java.util.HashSet;
+
+public class LengthofLoop {
+	
+	static Node head;
+	class Node{
+		Node next;
+		int data;
+		Node(int i){
+			data =i;
+			next=null;
+		}
+	}
+public static void main (String args[]) {
+	
+	LengthofLoop dl = new LengthofLoop();
+	dl.push(10);
+	dl.push(20);
+	dl.push(30);
+	dl.push(40);
+	
+	 dl.head.next.next.next.next = dl.head; 
+	detectLoopMethod(head);
+		
+	
+}
+static int detectLoopMethod(Node h) {//to count nodes from slowp to slowp position again
+	int count=1;
+	Node temp =h;
+	
+	while(temp.next!=null) {
+		
+			count++;
+			temp=temp.next;
+			
+	}
+	return count;
+	
+}
+
+int countofLoops(Node x) {
+	Node slowPointer=x;
+	Node fastPointer=x;
+	while(slowPointer !=null && fastPointer!=null && fastPointer.next!=null) {
+		slowPointer= slowPointer.next;
+		fastPointer = fastPointer.next.next;
+		if(slowPointer==fastPointer) {
+			return detectLoopMethod(slowPointer);
+		}
+		
+	
+}
+	return 0 ;
+}
+ void push(int i) {
+	Node newNode = new Node(i);
+	newNode.next =head;
+	head = newNode;
+	
+
+}
+}
+  
+ 
+
+
+	
+	
