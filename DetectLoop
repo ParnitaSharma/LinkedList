@@ -1,0 +1,53 @@
+
+import java.util.HashSet;
+
+public class DetectLoop {
+	
+	static Node head;
+	class Node{
+		Node next;
+		int data;
+		Node(int i){
+			data =i;
+			next=null;
+		}
+	}
+public static void main (String args[]) {
+	
+	DetectLoop dl = new DetectLoop();
+	dl.push(10);
+	dl.push(20);
+	dl.push(30);
+	dl.push(40);
+	
+	 dl.head.next.next.next.next = dl.head; 
+	if (detectLoopMethod(head)==true) {
+		System.out.println("loop found");
+	}
+	else {
+		System.out.println("Not Found");
+	}
+		
+	
+}
+static boolean detectLoopMethod(Node h) {
+	
+	 HashSet<Node> s = new HashSet<Node>(); 
+	while(h!=null) {
+		if(s.contains(h)) {
+			
+			return true;
+		}
+		s.add(h);
+		h=h.next;
+	}
+	return false;
+	
+}
+private void push(int i) {
+	Node newNode = new Node(i);
+	newNode.next =head;
+	head = newNode;
+	
+}
+}
