@@ -1,0 +1,50 @@
+
+public class LastElementToFirst {
+	static Node head;
+	class Node{
+		Node next;
+		int data;
+		Node(int i){
+			data =i;
+			next=null;
+		}
+	}
+	void push(int i) {
+		Node newNode = new Node(i);
+		newNode.next = head;
+		head = newNode;
+		
+	}
+	void swapMethod() {
+		Node secLast=null;
+		Node last=head;
+		while(last.next!=null) {
+			secLast=last;
+			last=last.next;
+			
+		}
+		secLast.next=null;
+		last.next=head;
+		head=last;
+	}
+	static void printList(Node head) {
+		Node print= head;
+		while(print!=null) {
+			System.out.println(print.data + " ");
+			print= print.next;
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		LastElementToFirst sn = new LastElementToFirst();
+		sn.push(10);
+		sn.push(20);
+		sn.push(30);
+		sn.push(40);
+		sn.push(50);
+		printList(head);
+		sn.swapMethod();
+	}
+
+}
