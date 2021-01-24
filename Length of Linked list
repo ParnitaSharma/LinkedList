@@ -1,0 +1,37 @@
+
+public class LinkedListLength {
+	Node head;
+	int count;
+	class Node{
+		Node next;
+		int data;
+		Node(int i){
+			data =i;
+			next=null;
+		}
+	}
+	void push(int i) {
+		Node newNode = new Node(i);
+		newNode.next = head;
+		head=newNode;
+		
+		
+	}
+public static void main(String args[]) {
+	LinkedListLength ln = new LinkedListLength();
+	ln.push(10);
+	ln.push(20);
+	ln.push(40);
+	ln.push(30);
+	System.out.println(ln.countLength());
+}
+int countLength() {
+	Node temp=head;
+	while(temp!=null) {
+		count++;
+		temp=temp.next;
+	}
+	return count;
+}
+ 
+}
