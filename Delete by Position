@@ -1,0 +1,56 @@
+
+public class DeletionByPosition {
+	Node head;
+	class Node{
+		Node next;
+		int data;
+		Node(int i){
+			data=i;
+			next=null;
+		}
+	}
+	void push(int i) {
+		Node newNode = new Node(i);
+		newNode.next=head;
+				head=newNode;
+		
+	}
+	
+public static void main(String args[]) {
+	DeletionByPosition  dp = new DeletionByPosition();
+	dp.push(10);
+	dp.push(20);
+	dp.push(30);
+	dp.push(40);
+	
+	dp.deleteNode(2);
+	dp.display();
+	
+	
+	
+}
+private void display() {
+	Node temp=head;
+	while(temp!=null) {
+		System.out.println(temp.data);
+		temp=temp.next;
+	}
+	
+}
+void deleteNode(int i) {
+	int position =i;
+	Node temp=head;
+	if(position==0) {
+		head=temp.next;
+		
+	}
+	for(int x=0; temp!=null && x<position-1;x++) 
+		temp=temp.next;
+	
+	
+	temp.next=temp.next.next;
+	//temp.next=n;
+	
+}
+ 
+}
